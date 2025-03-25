@@ -11,15 +11,11 @@ class Animal {
   }
 
   static get alive() {
-    return this.#all;
+    return this.#all.filter((animal) => animal.health > 0);
   }
 
   static remove(animal) {
-    const index = this.#all.findIndex((a) => a === animal);
-
-    if (index > -1) {
-      Animal.#all.splice(index, 1);
-    }
+    this.#all = this.#all.filter((a) => a !== animal);
   }
 }
 
